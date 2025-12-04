@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  keycloak:
+    #build: .
+    #image: auth-server-kc-image:latest
+    image: quay.io/keycloak/keycloak:26.3
+    container_name: auth-kc-container
+    command: ["start"]
+    ports:
+      - "8090:8080"
+    environment:
+      - KC_HTTP_ENABLED=true                 # ✅ Enable HTTP internally
+      - KC_HOSTNAME=https://auth.codexo.dev  # ✅ Public hostname
+      - KC_HOSTNAME_STRICT=false             # Allow proxying
+      - KC_PROXY=edge                        # Behind TLS-terminating proxy
+      - KC_PROXY_HEADERS=xforwarded
+      - KC_BOOTSTRAP_ADMIN_USERNAME=authadmin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=T7Y6R%xd2Yh!f3U9a2H/N3IZ§ezK
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=postgresql_keycloak
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_USERNAME=db_keycloak_username
+      - KC_DB_PASSWORD=og§d23S2/(s32h3&ff8(8]HJdx34!a
+      - KC_DB_SCHEMA=public
+    volumes:
+      - kc_auth_data:/opt/keycloak/data
+      - ./themes:/opt/keycloak/themes
+      #- ./keycloak.conf:/opt/keycloak/conf/keycloak.conf
+    restart: always
+    networks:
+      - internal
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      # HTTPS Router
+      - "traefik.http.routers.keycloak.rule=Host(`auth.codexo.dev`)"
+      - "traefik.http.routers.keycloak.entrypoints=websecure"
+      - "traefik.http.routers.keycloak.tls.certresolver=letsencrypt"
+      # HTTP Router with redirect
+      - "traefik.http.routers.keycloak-http.rule=Host(`auth.codexo.dev`)"
+      - "traefik.http.routers.keycloak-http.entrypoints=web"
+      - "traefik.http.routers.keycloak-http.middlewares=keycloak-redirect"
+      # Redirect middleware
+      - "traefik.http.middlewares.keycloak-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.keycloak-redirect.redirectscheme.permanent=true"
+      # Service
+      - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
+
+volumes:
+  kc_auth_data:
+    external: true
+
+networks:
+  internal:
+    external: true
+  proxy:
+    external: true
