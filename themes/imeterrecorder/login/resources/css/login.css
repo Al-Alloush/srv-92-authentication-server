@@ -99,6 +99,25 @@ div.kc-logo-text span {
     white-space: nowrap;
 }
 
+/* iMeterRecorder logo in login header */
+#kc-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 10px;
+}
+
+#kc-logo-image {
+    display: block;
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
 #kc-header-wrapper {
     font-size: 29px;
     text-transform: uppercase;
@@ -106,6 +125,7 @@ div.kc-logo-text span {
     line-height: 1.2em;
     padding: 62px 10px 20px;
     white-space: normal;
+    text-align: center;
 }
 
 #kc-content {
