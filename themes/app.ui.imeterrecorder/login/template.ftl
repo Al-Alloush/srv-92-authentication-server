@@ -61,6 +61,7 @@
         <header class="${properties.kcFormHeaderClass!}">
             <div id="kc-logo-wrapper">
                 <img src="${url.resourcesPath}/img/imeterrecorder-logo.png" alt="${realm.displayName!''}" id="kc-logo-img" />
+                <div id="kc-app-name">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}</div>
             </div>
             <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
                 <div class="${properties.kcLocaleMainClass!}" id="kc-locale">

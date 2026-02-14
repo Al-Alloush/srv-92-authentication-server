@@ -108,6 +108,17 @@ div.kc-logo-text span {
     margin: 0 auto;
 }
 
+#kc-app-name {
+    text-align: center;
+    font-size: 55px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
 #kc-content {
     width: 100%;
 }
