@@ -20,7 +20,7 @@
 <body style="margin:0;padding:0;background-color:#f0f4f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;width:100%;">
 
 <!-- Hidden preheader -->
-<div style="display:none;max-height:0;overflow:hidden;">iMeterRecorder &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+<div style="display:none;max-height:0;overflow:hidden;">iMeterReader &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f4f8;">
     <tr>
@@ -31,7 +31,7 @@
                 <!-- Header -->
                 <tr>
                     <td class="header-cell" style="background-color:#0099d3;border-radius:10px 10px 0 0;padding:28px 40px;text-align:center;">
-                        <span style="font-size:26px;font-weight:700;color:#ffffff;letter-spacing:1px;">iMeterRecorder</span>
+                        <span style="font-size:26px;font-weight:700;color:#ffffff;letter-spacing:1px;">iMeterReader</span>
                     </td>
                 </tr>
 
@@ -51,7 +51,7 @@
                 <tr>
                     <td class="footer-cell" style="background-color:#f8fafc;border-radius:0 0 10px 10px;border:1px solid #e2e8f0;border-top:none;padding:24px 40px;text-align:center;">
                         <p style="margin:0 0 6px;color:#6b7280;font-size:13px;line-height:1.5;">
-                            &copy; ${.now?string("yyyy")} iMeterRecorder &mdash; Codexo
+                            &copy; ${.now?string("yyyy")} iMeterReader &mdash; Codexo
                         </p>
                         <p style="margin:0;color:#9ca3af;font-size:11px;line-height:1.5;">
                             This is an automated message. Please do not reply to this email.
