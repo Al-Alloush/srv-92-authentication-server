@@ -110,13 +110,81 @@ div.kc-logo-text span {
 
 #kc-app-name {
     text-align: center;
-    font-size: 55px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+
+/* Strip card horizontal padding when tabs present — tabs then fill full card width naturally */
+.login-pf-page .card-pf.has-auth-tabs {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Restore horizontal padding inside header and content */
+.login-pf-page .has-auth-tabs .login-pf-header {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0;
+}
+
+.has-auth-tabs #kc-content {
+    padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+    .login-pf-page .has-auth-tabs .login-pf-header {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .has-auth-tabs #kc-content {
+        padding: 0 40px;
+    }
+}
+
+#kc-auth-tabs {
+    display: flex;
+    border-bottom: 3px solid #e8edf2;
+    background: #f7f9fb;
+}
+
+.kc-auth-tab {
+    flex: 1;
+    padding: 18px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #6b7280;
+    text-align: center;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    font-family: inherit;
+}
+
+.kc-auth-tab.active {
+    color: #0099d3;
+    border-bottom-color: #0099d3;
     font-weight: 700;
-    color: #333;
-    margin-top: 12px;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-    width: 100%;
+    background: #ffffff;
+}
+
+.kc-auth-tab:not(.active):hover {
+    color: #374151;
+    background: #eef2f6;
+}
+
+.has-auth-tabs #kc-info {
+    display: none;
+}
+
+.has-auth-tabs #kc-content-wrapper {
+    margin-top: 24px;
 }
 
 #kc-content {

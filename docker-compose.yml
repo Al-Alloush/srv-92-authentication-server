@@ -23,6 +23,8 @@ services:
       - KC_DB_USERNAME=db_service_admin_username
       - KC_DB_PASSWORD=og§d23S2/(s32h3&ff8(8]HJdx34!a
       - KC_DB_SCHEMA=public
+      - KC_SPI_THEME_CACHE_THEMES=false
+      - KC_SPI_THEME_CACHE_TEMPLATES=false
     volumes:
       - keycloak_data:/opt/keycloak/data
       - ./themes:/opt/keycloak/themes
