@@ -65,6 +65,8 @@
         .kc-auth-tab:not(.active):hover{color:#374151;background:#eef2f6;}
         .has-auth-tabs #kc-info{display:none;}
         .has-auth-tabs #kc-content-wrapper{margin-top:24px;}
+        .login-pf body{min-height:100%!important;height:auto!important;overflow-y:auto!important;}
+        .login-pf-page{padding-bottom:30px;}
     </style>
 </head>
 
