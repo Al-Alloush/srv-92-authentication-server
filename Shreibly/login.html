@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sign in · Schreibly</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="resources/img/icon.png" />
+<link rel="stylesheet" href="resources/css/styles.css" />
+</head>
+<body>
+<button class="kc-lang" type="button">EN ▾</button>
+<main class="kc-page">
+  <div>
+    <section class="kc-card">
+      <div class="kc-logo">
+        <img src="resources/img/icon.png" alt="" />
+        <span class="kc-wordmark">Schreibly</span>
+      </div>
+      <h1 class="kc-title">Welcome back</h1>
+      <p class="kc-subtitle">Sign in to continue writing.</p>
+
+      <form class="kc-form" action="#" method="post" novalidate>
+        <div class="kc-field">
+          <label class="kc-label" for="username">Email or username</label>
+          <input class="kc-input" id="username" name="username" type="text" autocomplete="username" autofocus placeholder="you@company.com" />
+        </div>
+
+        <div class="kc-field">
+          <label class="kc-label" for="password">Password</label>
+          <div class="kc-pw">
+            <input class="kc-input" id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" />
+            <button class="kc-pw-toggle" type="button" aria-label="Show password" onclick="(()=>{const i=document.getElementById('password');i.type=i.type==='password'?'text':'password'})()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="kc-row">
+          <label class="kc-check">
+            <input type="checkbox" name="rememberMe" />
+            <span>Stay signed in</span>
+          </label>
+          <a class="kc-link" href="forgot-password.html">Forgot password?</a>
+        </div>
+
+        <button class="kc-btn kc-btn--primary" type="submit">Sign in</button>
+      </form>
+
+      <div class="kc-divider">or continue with</div>
+
+      <div class="kc-social">
+        <button class="kc-btn kc-btn--ghost" type="button">
+          <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.17-1.84H9v3.48h4.84c-.21 1.13-.84 2.08-1.79 2.72v2.26h2.9c1.7-1.56 2.69-3.87 2.69-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.81 5.96-2.18l-2.9-2.26c-.81.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.66 9c0-.59.1-1.16.29-1.7V4.97H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.04l2.99-2.34z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.59C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.96L3.95 7.3C4.66 5.17 6.65 3.58 9 3.58z"/></svg>
+          Continue with Google
+        </button>
+        <button class="kc-btn kc-btn--ghost" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#0E1F5C" d="M16.36 1.43c0 1.14-.46 2.27-1.21 3.08-.81.88-2.14 1.55-3.21 1.47-.13-1.13.43-2.32 1.16-3.06.83-.84 2.21-1.45 3.26-1.49zM20 17.27c-.49 1.13-.72 1.63-1.36 2.62-.89 1.39-2.14 3.12-3.69 3.13-1.38.02-1.73-.9-3.6-.89-1.87.01-2.26.91-3.64.89-1.55-.01-2.73-1.58-3.62-2.96C1.54 16.16.78 12.05 2.6 9.19c1.29-2.02 3.34-3.21 5.27-3.21 1.96 0 3.2 1.07 4.82 1.07 1.57 0 2.53-1.07 4.8-1.07 1.71 0 3.52.93 4.81 2.55-4.23 2.32-3.55 8.35-2.31 8.74z"/></svg>
+          Continue with Apple
+        </button>
+      </div>
+
+      <p class="kc-foot">
+        New to Schreibly? <a class="kc-link" href="register.html">Create an account</a>
+      </p>
+    </section>
+
+    <div class="kc-brand-strip">
+      AI Writing Assistant · <strong>English · German</strong>
+    </div>
+  </div>
+</main>
+</body>
+</html>

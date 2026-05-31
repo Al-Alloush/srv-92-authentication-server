@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Two-step verification · Schreibly</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="resources/img/icon.png" />
+<link rel="stylesheet" href="resources/css/styles.css" />
+</head>
+<body>
+<button class="kc-lang" type="button">EN ▾</button>
+<main class="kc-page">
+  <div>
+    <section class="kc-card">
+      <div class="kc-logo">
+        <img src="resources/img/icon.png" alt="" />
+        <span class="kc-wordmark">Schreibly</span>
+      </div>
+
+      <h1 class="kc-title">Two-step verification</h1>
+      <p class="kc-subtitle">Enter the 6-digit code from your authenticator app.</p>
+
+      <form class="kc-form" action="#" method="post" novalidate>
+        <div class="kc-otp" id="kc-otp">
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 1" autofocus />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 2" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 3" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 4" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 5" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 6" />
+        </div>
+
+        <p style="margin:0; font-size:13px; color:#6E78A0; text-align:center;">
+          Code expires in <strong style="color:#0E1F5C;">02:48</strong>
+        </p>
+
+        <button class="kc-btn kc-btn--primary" type="submit">Verify &amp; continue</button>
+        <button class="kc-btn kc-btn--ghost" type="button">Use a recovery code instead</button>
+      </form>
+
+      <p class="kc-foot">
+        Lost your device? <a class="kc-link" href="#">Contact your administrator</a>
+      </p>
+    </section>
+  </div>
+</main>
+<script>
+// Auto-advance + paste support for OTP digits
+(() => {
+  const wrap = document.getElementById("kc-otp");
+  if (!wrap) return;
+  const inputs = Array.from(wrap.querySelectorAll("input"));
+  inputs.forEach((el, i) => {
+    el.addEventListener("input", () => {
+      el.value = el.value.replace(/[^0-9]/g, "").slice(0, 1);
+      if (el.value && i < inputs.length - 1) inputs[i + 1].focus();
+    });
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && !el.value && i > 0) inputs[i - 1].focus();
+    });
+    el.addEventListener("paste", (e) => {
+      const digits = (e.clipboardData.getData("text") || "").replace(/\D/g, "").slice(0, inputs.length);
+      if (!digits) return;
+      e.preventDefault();
+      digits.split("").forEach((d, j) => { if (inputs[j]) inputs[j].value = d; });
+      (inputs[digits.length] || inputs[inputs.length - 1]).focus();
+    });
+  });
+})();
+</script>
+</body>
+</html>
