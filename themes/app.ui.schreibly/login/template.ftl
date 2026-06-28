@@ -78,6 +78,12 @@
         .has-auth-tabs #kc-content-wrapper{margin-top:24px;}
         .login-pf body{min-height:100%!important;height:auto!important;overflow-y:auto!important;}
         .login-pf-page{padding-bottom:30px;}
+        /* DEV environment badge (shown only on the schreibly-dev realm) */
+        #kc-env-badge{display:inline-block;margin-top:10px;padding:4px 14px;background:#fff3cd;color:#8a6d00;border:1px solid #ffe69c;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+        /* "Back to main page" link shown under the registration form */
+        #kc-back-to-main-register{margin-top:22px;text-align:center;}
+        #kc-back-to-main-register a{display:inline-block;padding:10px 26px;border:1px solid #0099d3;border-radius:6px;color:#0099d3;text-decoration:none;font-size:14px;font-weight:600;background:#fff;}
+        #kc-back-to-main-register a:hover{background:#0099d3;color:#fff;}
     </style>
 </head>
 
@@ -89,6 +95,13 @@
 
     <#assign isRegisterPage = !login?? && (profile?? || register??)>
     <#assign showTabs = (login?? || isRegisterPage) && realm.registrationAllowed>
+    <#assign isDevRealm = (realm.name!'') == "schreibly-dev">
+
+    <#-- Main website page used by the "back to main page" link; falls back to the login URL. -->
+    <#assign mainPageUrl = (client.baseUrl)!''>
+    <#if !mainPageUrl?has_content>
+        <#assign mainPageUrl = url.loginUrl>
+    </#if>
 
     <div class="${properties.kcFormCardClass!}<#if showTabs> has-auth-tabs</#if>">
         <header class="${properties.kcFormHeaderClass!}">
@@ -99,6 +112,9 @@
             <div id="kc-logo-wrapper">
                 <img src="${url.resourcesPath}/img/schreibly-logo.png" alt="${realm.displayName!'Schreibly'}" id="kc-logo-img" />
                 <div id="kc-app-name">Schreibly</div>
+                <#if isDevRealm>
+                    <div id="kc-env-badge">${msg("devEnvBadge")}</div>
+                </#if>
             </div>
 
             <#-- Page title: shown only on non-tab pages (OTP, forgot password, etc.) -->
@@ -205,6 +221,13 @@
                         <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
                             <#nested "info">
                         </div>
+                    </div>
+                </#if>
+
+                <#-- Let the user leave registration and return to the main website. -->
+                <#if isRegisterPage>
+                    <div id="kc-back-to-main-register">
+                        <a href="${mainPageUrl}">${msg("backToMainPage")}</a>
                     </div>
                 </#if>
             </div>
