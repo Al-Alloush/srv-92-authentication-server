@@ -1,0 +1,26 @@
+/*
+ * Schreibly minimal brand pass for the Keycloak 26 React Admin Console
+ * (internal-only). PatternFly 5 primary/link CSS-variable overrides to the
+ * Schreibly blue (#0099d3) plus the logo/favicon wired in theme.properties.
+ * No remote assets, no font imports (system font stack inherited).
+ */
+
+:root {
+    --pf-v5-global--primary-color--100: #0099d3;
+    --pf-v5-global--primary-color--200: #007ba8;
+    --pf-v5-global--primary-color--light-100: #33adda;
+    --pf-v5-global--active-color--100: #0099d3;
+    --pf-v5-global--active-color--200: #007ba8;
+    --pf-v5-global--link--Color: #0099d3;
+    --pf-v5-global--link--Color--hover: #007ba8;
+    --pf-v5-global--link--Color--active: #007ba8;
+    --pf-v5-global--link--Color--visited: #0099d3;
+    --pf-v5-global--BorderColor--active: #0099d3;
+}
+
+.pf-v5-c-button.pf-m-primary {
+    --pf-v5-c-button--m-primary--BackgroundColor: #0099d3;
+    --pf-v5-c-button--m-primary--hover--BackgroundColor: #007ba8;
+    --pf-v5-c-button--m-primary--active--BackgroundColor: #007ba8;
+    --pf-v5-c-button--m-primary--focus--BackgroundColor: #007ba8;
+}
