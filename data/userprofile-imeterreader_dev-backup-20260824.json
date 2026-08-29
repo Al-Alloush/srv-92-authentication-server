@@ -1,0 +1,198 @@
+{
+  "attributes" : [ {
+    "name" : "username",
+    "displayName" : "${username}",
+    "validations" : {
+      "length" : {
+        "min" : 3,
+        "max" : 255
+      },
+      "username-prohibited-characters" : { },
+      "up-username-not-idn-homograph" : { }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "multivalued" : false
+  }, {
+    "name" : "email",
+    "displayName" : "${email}",
+    "validations" : {
+      "email" : { },
+      "length" : {
+        "max" : 255
+      }
+    },
+    "annotations" : { },
+    "required" : {
+      "roles" : [ "user" ]
+    },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "multivalued" : false
+  }, {
+    "name" : "firstName",
+    "displayName" : "${firstName}",
+    "validations" : {
+      "length" : {
+        "max" : 255
+      },
+      "person-name-prohibited-characters" : { }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "multivalued" : false
+  }, {
+    "name" : "lastName",
+    "displayName" : "${lastName}",
+    "validations" : {
+      "length" : {
+        "max" : 255
+      },
+      "person-name-prohibited-characters" : { }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "multivalued" : false
+  }, {
+    "name" : "country",
+    "displayName" : "${profile.attributes.country}",
+    "validations" : {
+      "length" : {
+        "min" : "3",
+        "max" : "100"
+      }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "group" : "address",
+    "multivalued" : false
+  }, {
+    "name" : "locality",
+    "displayName" : "${profile.attributes.locality}",
+    "validations" : {
+      "length" : {
+        "min" : "3",
+        "max" : "100"
+      }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "group" : "address",
+    "multivalued" : false
+  }, {
+    "name" : "postal_code",
+    "displayName" : "${profile.attributes.postal_code}",
+    "validations" : {
+      "length" : {
+        "min" : "3",
+        "max" : "20"
+      }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "group" : "address",
+    "multivalued" : false
+  }, {
+    "name" : "street",
+    "displayName" : "${profile.attributes.street}",
+    "validations" : {
+      "length" : {
+        "min" : "3",
+        "max" : "200"
+      }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "group" : "address",
+    "multivalued" : false
+  }, {
+    "name" : "buildingNumber",
+    "displayName" : "${profile.attributes.buildingNumber}",
+    "validations" : {
+      "length" : {
+        "min" : "1",
+        "max" : "20"
+      }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "group" : "address",
+    "multivalued" : false
+  }, {
+    "name" : "mobileNumber",
+    "displayName" : "${profile.attributes.mobileNumber}",
+    "validations" : {
+      "length" : {
+        "min" : "3",
+        "max" : "20"
+      },
+      "pattern" : {
+        "pattern" : "^\\+?[0-9\\s\\-]{7,20}$",
+        "error-message" : "${mobileNumberInvalid}"
+      }
+    },
+    "annotations" : { },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin", "user" ]
+    },
+    "selector" : {
+      "scopes" : [ ]
+    },
+    "multivalued" : false
+  }, {
+    "name" : "mobileValidated",
+    "displayName" : "${profile.attributes.mobileValidated}",
+    "validations" : {
+      "options" : {
+        "options" : [ "true", "false" ]
+      }
+    },
+    "annotations" : {
+      "inputType" : "select"
+    },
+    "permissions" : {
+      "view" : [ "admin", "user" ],
+      "edit" : [ "admin" ]
+    },
+    "multivalued" : false,
+    "defaultValue" : "false"
+  } ],
+  "groups" : [ {
+    "name" : "user-metadata",
+    "displayHeader" : "User metadata",
+    "displayDescription" : "Attributes, which refer to user metadata"
+  }, {
+    "name" : "address",
+    "displayHeader" : "${profile.attribute-group.address}",
+    "displayDescription" : "${profile.attribute-group-description.address}",
+    "annotations" : { }
+  } ],
+  "unmanagedAttributePolicy" : "ENABLED"
+}

@@ -70,6 +70,43 @@ services:
       - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
       - "traefik.docker.network=proxy"
 
+  # POST->GET shim for Sign in with Apple (see apple-formpost-shim/shim.py).
+  # Apple form_posts the broker callback; Keycloak's OIDC endpoint is GET-only.
+  # This intercepts ONLY POST on the apple endpoint and 303s it back as a GET.
+  # Serves every realm in REALMS; the target realm comes from the request path.
+  apple-formpost-shim:
+    image: python:3.12-alpine
+    container_name: apple-formpost-shim
+    command: ["python", "/app/shim.py"]
+    environment:
+      - BASE_URL=https://auth.codexo.dev
+      - REALMS=imeterreader_dev,imeterreader
+      - LISTEN_PORT=8080
+    volumes:
+      - ./apple-formpost-shim/shim.py:/app/shim.py:ro
+    mem_limit: 96M
+    mem_reservation: 32M
+    restart: always
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      # POST-only + exact path + high priority so it wins over the Host-only keycloak router.
+      # One router per realm; both point at the same service (GET still falls through
+      # to Keycloak, which is what completes the token exchange).
+      - "traefik.http.routers.apple-shim.rule=Host(`auth.codexo.dev`) && Path(`/realms/imeterreader_dev/broker/apple/endpoint`) && Method(`POST`)"
+      - "traefik.http.routers.apple-shim.priority=1000"
+      - "traefik.http.routers.apple-shim.entrypoints=websecure"
+      - "traefik.http.routers.apple-shim.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.apple-shim.service=apple-shim"
+      - "traefik.http.routers.apple-shim-prod.rule=Host(`auth.codexo.dev`) && Path(`/realms/imeterreader/broker/apple/endpoint`) && Method(`POST`)"
+      - "traefik.http.routers.apple-shim-prod.priority=1000"
+      - "traefik.http.routers.apple-shim-prod.entrypoints=websecure"
+      - "traefik.http.routers.apple-shim-prod.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.apple-shim-prod.service=apple-shim"
+      - "traefik.http.services.apple-shim.loadbalancer.server.port=8080"
+
 volumes:
   keycloak_data:
     external: true
