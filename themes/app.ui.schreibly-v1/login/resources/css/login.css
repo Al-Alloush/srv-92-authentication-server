@@ -776,3 +776,75 @@ ul#kc-totp-supported-apps {
     overflow-wrap: break-word
 }
 /* End Recovery codes */
+
+/* ── Terms & Privacy acceptance gate (terms.ftl) ─────────────────────────────
+   Written with logical properties only (start/end, gap) so the Arabic page is
+   correct from dir="rtl" alone -- there is no separate RTL rule to forget. */
+
+#kc-terms-form {
+    text-align: start;
+}
+
+#kc-terms-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 6px 0 26px;
+}
+
+.kc-terms-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.kc-terms-check input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin: 3px 0 0;
+    accent-color: #0099d3;
+}
+
+.kc-terms-check label {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4a5560;
+}
+
+.kc-terms-check a {
+    color: #0099d3;
+    text-decoration: underline;
+}
+
+#kc-terms-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+#kc-terms-buttons #kc-accept {
+    flex: 1 1 auto;
+}
+
+#kc-terms-buttons #kc-decline {
+    flex: 0 0 auto;
+}
+
+/* Legal notice under the register button (register.ftl). Logical properties only,
+   so it is correct in RTL from dir="rtl" alone. */
+#kc-register-legal {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e8edf2;
+    text-align: start;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #6b7280;
+}
+
+#kc-register-legal a {
+    color: #0099d3;
+    text-decoration: underline;
+}

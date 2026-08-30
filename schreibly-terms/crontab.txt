@@ -1,0 +1,21 @@
+# Schreibly Keycloak terms-acceptance gate.
+# See /srv/keycloak/schreibly-terms/README.md. Installed with:
+#     crontab /srv/keycloak/schreibly-terms/crontab.txt
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+TERMS=/srv/keycloak/schreibly-terms
+
+# Record which documents, and in which language, each acceptance was for.
+# Keycloak's built-in action writes only a timestamp; this fills in the rest.
+# Every 5 minutes, so a fresh acceptance is fully recorded almost immediately.
+*/5 * * * * cd $TERMS && python3 schreibly_terms.py stamp --realm schreibly-dev --quiet >> logs/stamp.log 2>&1
+*/5 * * * * cd $TERMS && python3 schreibly_terms.py stamp --realm schreibly --quiet     >> logs/stamp.log 2>&1
+
+# Delete registrations abandoned at the gate (>7 days, never got through, no
+# session ever, created after the gate went live). ARMED: SWEEP_APPLY=1 in
+# terms.env, so this deletes. Set it back to 0 and the job only reports.
+20 3 * * * cd $TERMS && python3 schreibly_terms.py sweep --realm schreibly-dev --apply >> logs/sweep.log 2>&1
+25 3 * * * cd $TERMS && python3 schreibly_terms.py sweep --realm schreibly     --apply >> logs/sweep.log 2>&1
+
+# Alarm if the published document dates drift away from the versions in terms.env.
+0 8 * * * cd $TERMS && python3 check_versions.py >> logs/versions.log 2>&1

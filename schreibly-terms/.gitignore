@@ -1,0 +1,7 @@
+logs/
+notify-out/
+smtp-password
+
+# Point-in-time safety copy taken before the gate was applied. Contains the
+# real user list for both realms - keep it local, do not commit personal data.
+backup-*/
