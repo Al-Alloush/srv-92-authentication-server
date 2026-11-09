@@ -4,5 +4,5 @@
 
 <#import "template.ftl" as layout>
 <@layout.emailLayout>
-${msg("executeActionsBodyHtml", link, linkExpiration, realmName, requiredActionsText, linkExpirationFormatter(linkExpiration))?no_esc}
+${msg("executeActionsBodyHtml", link?replace("https://auth.codexo.dev/realms/", "https://schreibly.com/kc/realms/"), linkExpiration, "Schreibly", requiredActionsText, linkExpirationFormatter(linkExpiration))?no_esc}
 </@layout.emailLayout>

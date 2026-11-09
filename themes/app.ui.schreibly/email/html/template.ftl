@@ -28,14 +28,12 @@
 
             <table role="presentation" class="email-container" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
-                <#-- Header logo: the schreibly-logo.png asset from the app.ui.schreibly LOGIN
-                     theme, served by Keycloak. The "/resources/<ver>/" segment is tied to the
-                     Keycloak version — if Keycloak is upgraded, open the login page and refresh
-                     <ver> with the new value (currently 26.5.3 -> lcdo4). -->
+                <#-- Header logo: served from schreibly.com (not auth.codexo.dev) so every URL in
+                     the mail matches the From domain; a mismatch gets Outlook to junk it (SCL 5). -->
                 <!-- Header -->
                 <tr>
                     <td class="header-cell" align="center" style="background-color:#ffffff;border:1px solid #e2e8f0;border-bottom:none;border-radius:10px 10px 0 0;padding:32px 40px;text-align:center;">
-                        <img src="https://auth.codexo.dev/resources/lcdo4/login/app.ui.schreibly/img/schreibly-logo.png"
+                        <img src="https://schreibly.com/_content/AppWebsite.Shared/brand/logo-name.png"
                              alt="Schreibly" width="190" height="57"
                              style="display:block;margin:0 auto;width:190px;height:auto;max-width:70%;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
                     </td>
@@ -57,7 +55,7 @@
                 <tr>
                     <td class="footer-cell" style="background-color:#f8fafc;border-radius:0 0 10px 10px;border:1px solid #e2e8f0;border-top:none;padding:24px 40px;text-align:center;">
                         <p style="margin:0 0 6px;color:#6b7280;font-size:13px;line-height:1.5;">
-                            &copy; ${.now?string("yyyy")} Schreibly &mdash; Codexo
+                            &copy; ${.now?string("yyyy")} Schreibly
                         </p>
                         <p style="margin:0;color:#9ca3af;font-size:11px;line-height:1.5;">
                             This is an automated message. Please do not reply to this email.
